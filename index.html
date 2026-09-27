@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Somos Chicureo Propiedades · Corredora de propiedades en Chicureo, Colina</title>
+  <meta name="description" content="Compra, venta y arriendo de casas en Chicureo, Colina. Corredoras que conocen el sector y te acompañan en cada paso de la operación.">
+  <meta name="theme-color" content="#1e1c19">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Color */
+      --paper: #f7f4ef;
+      --paper-2: #efe9e0;
+      --ink: #1e1c19;
+      --ink-2: #3a3630;
+      --muted: #6a6358;
+      --line: #ddd5c8;
+      --accent: #7a6749;
+      --accent-deep: #5b4c35;
+      --night: #1b1a17;
+      --night-2: #26241f;
+      --on-night: #efe9e0;
+      --on-night-muted: #b3aa9c;
+
+      /* Tipografía */
+      --serif: "Newsreader", Georgia, "Times New Roman", serif;
+      --sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+      /* Forma y ritmo */
+      --r: 4px;
+      --container: 1200px;
+      --gutter: clamp(20px, 5vw, 40px);
+      --section: clamp(80px, 11vw, 136px);
+      --ease: cubic-bezier(.2, .7, .2, 1);
+
+      /* Filtro común para los retratos del equipo (unifica tono y luz) */
+      --portrait-filter: grayscale(18%) sepia(6%) saturate(.92) contrast(1.04) brightness(1.01);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-text-size-adjust: 100%; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.65 var(--sans); -webkit-font-smoothing: antialiased; }
+    img, video, iframe { display: block; max-width: 100%; }
+    a { color: inherit; }
+    h1, h2, h3 { margin: 0; font-family: var(--serif); font-weight: 400; letter-spacing: -.01em; text-wrap: balance; }
+    p { margin: 0; }
+    ul { margin: 0; padding: 0; list-style: none; }
+    button { font: inherit; color: inherit; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .skip { position: absolute; left: 16px; top: -60px; z-index: 100; padding: 10px 16px; background: var(--ink); color: var(--paper); border-radius: var(--r); }
+    .skip:focus { top: 16px; }
+    .container { width: min(100% - 2 * var(--gutter), var(--container)); margin-inline: auto; }
+    .ico { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* Botones */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 26px; border: 1px solid var(--ink); border-radius: var(--r); background: var(--ink); color: var(--paper); font: 500 15px/1 var(--sans); letter-spacing: .02em; text-decoration: none; cursor: pointer; transition: background-color .25s var(--ease), border-color .25s var(--ease), color .25s var(--ease); }
+    .btn:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+    .btn--light { background: var(--paper); border-color: var(--paper); color: var(--ink); }
+    .btn--light:hover { background: #fff; border-color: #fff; }
+    .btn--line { background: transparent; color: var(--ink); border-color: var(--line); }
+    .btn--line:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+    .btn--lg { min-height: 58px; padding: 0 34px; font-size: 16px; }
+    .btn .ico { width: 20px; height: 20px; }
+    .link { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 500; text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+
+    /* Etiquetas */
+    .eyebrow { display: block; margin-bottom: 18px; font: 600 12px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
+    .sample { display: inline-block; margin: 0; padding: 5px 12px; border: 1px dashed currentColor; border-radius: 999px; font: 600 12px/1.2 var(--sans); letter-spacing: .02em; opacity: .7; vertical-align: middle; }
+
+    /* Navegación */
+    .nav { position: fixed; inset: 0 0 auto; z-index: 40; color: var(--paper); transition: background-color .35s var(--ease), color .35s var(--ease), box-shadow .35s var(--ease); }
+    .nav.is-solid { background: rgba(247, 244, 239, .96); color: var(--ink); box-shadow: 0 1px 0 var(--line); }
+    .nav__inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 76px; }
+    .brand { display: grid; line-height: 1; text-decoration: none; }
+    .brand b { font: 500 22px/1 var(--serif); letter-spacing: -.01em; }
+    .brand span { margin-top: 5px; font: 600 10px/1 var(--sans); letter-spacing: .28em; text-transform: uppercase; opacity: .75; }
+    .nav__menu { display: flex; align-items: center; gap: 32px; }
+    .nav__menu a:not(.btn) { font-size: 14px; font-weight: 500; text-decoration: none; opacity: .85; transition: opacity .2s; }
+    .nav__menu a:not(.btn):hover { opacity: 1; }
+    .nav .btn { min-height: 42px; padding: 0 18px; font-size: 14px; background: transparent; border-color: currentColor; color: inherit; }
+    .nav .btn:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+    .nav.is-solid .btn:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .nav__toggle { display: none; width: 44px; height: 44px; margin-right: -10px; border: 0; background: none; cursor: pointer; }
+    .nav__toggle span { display: block; width: 22px; height: 1.5px; margin: 6px auto; background: currentColor; transition: transform .25s var(--ease), opacity .2s; }
+    .nav__toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+    .nav__toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav__toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+    /* Hero */
+    .hero { position: relative; display: grid; align-items: end; min-height: 100svh; padding: 140px 0 clamp(64px, 10vh, 112px); color: var(--paper); background: var(--night); overflow: hidden; isolation: isolate; }
+    .hero__video { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
+    .hero__shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(20, 18, 15, .45) 0%, rgba(20, 18, 15, .15) 35%, rgba(20, 18, 15, .7) 100%); }
+    .hero__content { max-width: 720px; }
+    .hero h1 { font-size: clamp(42px, 7vw, 84px); line-height: 1.02; }
+    .hero h1 em { font-style: italic; }
+    .hero__sub { max-width: 520px; margin-top: 22px; font-size: clamp(16px, 1.6vw, 18px); color: rgba(247, 244, 239, .86); }
+    .hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 32px; margin-top: 38px; }
+    .hero__actions .link { color: var(--paper); }
+    .hero__pause { position: absolute; right: var(--gutter); bottom: clamp(24px, 4vh, 40px); display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid rgba(247, 244, 239, .4); border-radius: 50%; background: rgba(20, 18, 15, .25); color: var(--paper); cursor: pointer; transition: background-color .2s; }
+    .hero__pause:hover { background: rgba(20, 18, 15, .5); }
+    .hero__pause .ico { width: 16px; height: 16px; }
+    .hero__pause .i-play { display: none; }
+    .hero__pause[aria-pressed="true"] .i-play { display: block; }
+    .hero__pause[aria-pressed="true"] .i-pause { display: none; }
+
+    /* Secciones */
+    section { padding-block: var(--section); }
+    .head { display: grid; gap: 18px; max-width: 640px; margin-bottom: clamp(44px, 6vw, 72px); }
+    .head h2 { font-size: clamp(34px, 4.6vw, 54px); line-height: 1.08; }
+    .head p { color: var(--muted); font-size: 17px; }
+    .head__row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
+    .head__row .eyebrow { margin: 0; }
+
+    /* Nosotros */
+    .about__grid { display: grid; grid-template-columns: 1fr; gap: 56px; }
+    .about__lead { font: 400 clamp(26px, 3.2vw, 38px)/1.25 var(--serif); letter-spacing: -.01em; }
+    .about__lead + p { margin-top: 24px; max-width: 560px; color: var(--muted); font-size: 17px; }
+    .pillars { display: grid; gap: 0; border-top: 1px solid var(--line); }
+    .pillar { display: grid; grid-template-columns: 40px 1fr; gap: 4px 20px; padding: 28px 0; border-bottom: 1px solid var(--line); }
+    .pillar__n { grid-row: span 2; font: 400 15px/1.9 var(--serif); color: var(--accent); }
+    .pillar h3 { font-size: 23px; line-height: 1.3; }
+    .pillar p { color: var(--muted); }
+
+    /* Propiedades */
+    .props { background: var(--paper-2); }
+    .props__grid { display: grid; grid-template-columns: 1fr; gap: 48px 28px; }
+    .prop { display: flex; flex-direction: column; }
+    .prop__media { position: relative; display: block; width: 100%; padding: 0; border: 0; border-radius: var(--r); overflow: hidden; background: var(--line); aspect-ratio: 4 / 3; cursor: pointer; }
+    .prop__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+    .prop__media:hover img { transform: scale(1.03); }
+    .prop__tag { position: absolute; left: 14px; top: 14px; padding: 7px 12px; border-radius: 2px; background: rgba(247, 244, 239, .94); color: var(--ink); font: 600 11px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; }
+    .prop__more { position: absolute; right: 14px; bottom: 14px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 2px; background: rgba(27, 26, 23, .6); color: var(--paper); font-size: 13px; font-weight: 500; }
+    .prop__more .ico { width: 15px; height: 15px; }
+    .prop__body { display: flex; flex: 1; flex-direction: column; padding-top: 22px; }
+    .prop__loc { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 13px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; }
+    .prop__loc .ico { width: 15px; height: 15px; }
+    .prop h3 { margin-top: 10px; font-size: 25px; line-height: 1.2; }
+    .prop__price { margin-top: 12px; font: 500 22px/1.2 var(--serif); font-variant-numeric: tabular-nums lining-nums; }
+    .prop__price small { font: 400 14px/1 var(--sans); color: var(--muted); }
+    .prop__specs { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 18px 0 24px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--ink-2); font-size: 14px; }
+    .prop__specs li { display: inline-flex; align-items: center; gap: 8px; }
+    .prop__specs .ico { color: var(--accent); }
+    .prop .btn { margin-top: auto; align-self: flex-start; }
+
+    /* Placeholder cuando la foto aún no existe */
+    [data-ph].is-empty { display: grid; place-items: center; background: repeating-linear-gradient(135deg, var(--line) 0 1px, transparent 1px 14px), var(--paper-2); }
+    [data-ph].is-empty::after { content: attr(data-ph); padding: 0 16px; color: var(--muted); font-size: 13px; text-align: center; }
+    [data-ph].is-empty img, [data-ph].is-empty .prop__more { display: none; }
+
+    /* Equipo */
+    .team__grid { display: grid; grid-template-columns: 1fr; gap: 48px 32px; }
+    .agent__photo { position: relative; aspect-ratio: 3 / 4; border-radius: var(--r); overflow: hidden; background: var(--paper-2); }
+    .agent__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; filter: var(--portrait-filter); }
+    .agent h3 { margin-top: 22px; font-size: 26px; line-height: 1.2; }
+    .agent__role { margin-top: 6px; color: var(--accent); font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+    .agent__role span { color: var(--muted); font-weight: 500; letter-spacing: .04em; text-transform: none; }
+    .agent__quote { margin-top: 14px; max-width: 34ch; font: italic 400 18px/1.45 var(--serif); color: var(--ink-2); }
+    .agent .link { margin-top: 18px; }
+
+    /* Proceso */
+    .process { background: var(--night); color: var(--on-night); }
+    .process .head p { color: var(--on-night-muted); }
+    .process .eyebrow { color: #c2ae8c; }
+    .steps { display: grid; grid-template-columns: 1fr; counter-reset: step; border-top: 1px solid var(--night-2); }
+    .step { position: relative; padding: 32px 0; border-bottom: 1px solid #34312b; }
+    .step__n { display: block; margin-bottom: 16px; font: italic 400 20px/1 var(--serif); color: #c2ae8c; }
+    .step h3 { font-size: 24px; line-height: 1.25; }
+    .step p { margin-top: 10px; color: var(--on-night-muted); }
+
+    /* Contacto */
+    .contact__grid { display: grid; grid-template-columns: 1fr; gap: 48px; }
+    .contact h2 { font-size: clamp(36px, 5vw, 60px); line-height: 1.05; }
+    .contact__lead { margin-top: 20px; max-width: 460px; color: var(--muted); font-size: 17px; }
+    .contact .btn--lg { margin-top: 36px; }
+    .contact__list { display: grid; gap: 18px; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--line); }
+    .contact__list li { display: grid; grid-template-columns: 22px 1fr; gap: 14px; align-items: start; }
+    .contact__list .ico { margin-top: 3px; color: var(--accent); }
+    .contact__list strong { display: block; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+    .contact__list a { text-decoration: none; }
+    .contact__list .sample { margin-left: 6px; font-size: 11px; padding: 3px 9px; }
+    .map { min-height: 360px; border-radius: var(--r); overflow: hidden; background: var(--paper-2); }
+    .map iframe { width: 100%; height: 100%; min-height: 360px; border: 0; filter: grayscale(.85) contrast(.95); }
+
+    /* Pie */
+    .footer { padding: 40px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+    .footer__inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; }
+
+    /* WhatsApp flotante */
+    .wa-float { position: fixed; right: 20px; bottom: 20px; z-index: 30; display: grid; place-items: center; width: 54px; height: 54px; border-radius: 50%; background: var(--ink); color: var(--paper); box-shadow: 0 10px 30px -10px rgba(0, 0, 0, .45); opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity .3s var(--ease), transform .3s var(--ease), background-color .25s; }
+    .wa-float.is-on { opacity: 1; transform: none; pointer-events: auto; }
+    .wa-float:hover { background: var(--accent-deep); }
+    .wa-float .ico { width: 24px; height: 24px; }
+
+    /* Galería */
+    .gallery { width: min(100% - 32px, 1040px); max-height: calc(100dvh - 32px); padding: 0; border: 0; border-radius: var(--r); background: var(--night); color: var(--on-night); }
+    .gallery::backdrop { background: rgba(20, 18, 15, .82); }
+    .gallery__bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 12px 12px 20px; }
+    .gallery__title { font: 400 18px/1.3 var(--serif); }
+    .gallery__count { color: var(--on-night-muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+    .gallery__stage { position: relative; display: grid; place-items: center; background: #000; aspect-ratio: 3 / 2; max-height: calc(100dvh - 120px); }
+    .gallery__stage img { width: 100%; height: 100%; object-fit: contain; }
+    .gallery__btn { display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 50%; background: transparent; color: inherit; cursor: pointer; }
+    .gallery__btn:hover { background: var(--night-2); }
+    .gallery__nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(27, 26, 23, .55); }
+    .gallery__nav:hover { background: rgba(27, 26, 23, .85); }
+    .gallery__nav[data-dir="-1"] { left: 12px; }
+    .gallery__nav[data-dir="1"] { right: 12px; }
+    .gallery__nav[hidden] { display: none; }
+
+    /* Aparición suave */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+    .reveal.is-in { opacity: 1; transform: none; }
+
+    @media (min-width: 720px) {
+      .props__grid { grid-template-columns: repeat(2, 1fr); }
+      .props__grid .prop:first-child { grid-column: span 2; }
+      .team__grid { grid-template-columns: repeat(3, 1fr); }
+      .steps { grid-template-columns: repeat(2, 1fr); column-gap: 48px; }
+    }
+    @media (min-width: 1024px) {
+      .about__grid { grid-template-columns: 1.05fr 1fr; gap: 96px; align-items: start; }
+      .about__intro { position: sticky; top: 120px; }
+      /* 5 tarjetas: 2 grandes arriba, 3 abajo */
+      .props__grid { grid-template-columns: repeat(6, 1fr); }
+      .props__grid .prop { grid-column: span 2; }
+      .props__grid .prop:nth-child(-n+2) { grid-column: span 3; }
+      .props__grid .prop:nth-child(-n+2) .prop__media { aspect-ratio: 3 / 2; }
+      .steps { grid-template-columns: repeat(4, 1fr); column-gap: 40px; border-top: 0; }
+      .step { padding: 32px 0 0; border-bottom: 0; border-top: 1px solid #34312b; }
+      .contact__grid { grid-template-columns: 1fr 1.15fr; gap: 80px; align-items: stretch; }
+    }
+    @media (max-width: 900px) {
+      .nav__toggle { display: block; }
+      .nav__menu { position: fixed; inset: 76px 0 auto; flex-direction: column; align-items: stretch; gap: 0; padding: 8px var(--gutter) 28px; background: var(--paper); color: var(--ink); box-shadow: 0 1px 0 var(--line); transform: translateY(-8px); opacity: 0; visibility: hidden; transition: opacity .25s var(--ease), transform .25s var(--ease), visibility .25s; }
+      .nav__menu.is-open { transform: none; opacity: 1; visibility: visible; }
+      .nav__menu a:not(.btn) { padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 17px; opacity: 1; }
+      .nav__menu .btn { margin-top: 20px; min-height: 50px; background: var(--ink); color: var(--paper); border-color: var(--ink); }
+      .nav:has(.nav__menu.is-open) { background: var(--paper); color: var(--ink); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Saltar al contenido</a>
+
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="#top" aria-label="Somos Chicureo Propiedades, inicio">
+        <b>Somos Chicureo</b>
+        <span>Propiedades</span>
+      </a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav__menu" id="menu" aria-label="Principal">
+        <a href="#nosotros">Nosotros</a>
+        <a href="#propiedades">Propiedades</a>
+        <a href="#equipo">Equipo</a>
+        <a href="#proceso">Cómo trabajamos</a>
+        <a href="#contacto">Contacto</a>
+        <a class="btn js-wa" href="#" data-msg="Hola Somos Chicureo Propiedades, quiero hacerles una consulta.">WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- 1. Hero -->
+    <section class="hero" id="top" aria-label="Presentación">
+      <video class="hero__video" autoplay muted loop playsinline preload="auto" poster="https://res.cloudinary.com/al1su85c/video/upload/so_0,w_1920,q_auto/v1790549476/hero.jpg" aria-hidden="true">
+        <source src="https://res.cloudinary.com/al1su85c/video/upload/v1790549476/hero.mp4" type="video/mp4">
+        <source src="assets/hero.mp4" type="video/mp4">
+      </video>
+      <div class="hero__shade" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero__content">
+          <span class="eyebrow" style="color: rgba(247,244,239,.8)">Chicureo · Colina</span>
+          <h1>Tu casa en Chicureo, <em>con alguien que conoce el barrio.</em></h1>
+          <p class="hero__sub">Compra, venta y arriendo, acompañados de principio a fin.</p>
+          <div class="hero__actions">
+            <a class="btn btn--light btn--lg js-wa" href="#" data-msg="Hola Somos Chicureo Propiedades, estoy buscando una propiedad en Chicureo y me gustaría conversar.">
+              <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Conversemos por WhatsApp
+            </a>
+            <a class="link" href="#propiedades">Ver propiedades</a>
+          </div>
+        </div>
+      </div>
+      <button class="hero__pause" type="button" aria-pressed="false" aria-label="Pausar video de fondo">
+        <svg class="ico i-pause" aria-hidden="true"><use href="#i-pause"/></svg>
+        <svg class="ico i-play" aria-hidden="true"><use href="#i-play"/></svg>
+      </button>
+    </section>
+
+    <!-- 2. Nosotros -->
+    <section class="about" id="nosotros">
+      <div class="container about__grid">
+        <div class="about__intro head" style="margin-bottom:0">
+          <span class="eyebrow" style="margin:0">Quiénes somos</span>
+          <h2 class="about__lead">Una decisión de este tamaño merece a alguien que responda, explique y esté ahí hasta la entrega de llaves.</h2>
+          <p>Somos una corredora de Chicureo, para Chicureo. Trabajamos con pocas propiedades a la vez para darle a cada una —y a cada familia— el tiempo que realmente necesita.</p>
+        </div>
+        <ul class="pillars">
+          <li class="pillar">
+            <span class="pillar__n" aria-hidden="true">01</span>
+            <h3>Acompañamiento personalizado</h3>
+            <p>Una misma corredora lleva tu caso desde la primera visita hasta la firma. Sabes a quién llamar, y ella ya sabe de qué le estás hablando.</p>
+          </li>
+          <li class="pillar">
+            <span class="pillar__n" aria-hidden="true">02</span>
+            <h3>Conocimiento local de Chicureo</h3>
+            <p>Qué condominios tienen buena administración, cómo se mueve el tráfico a las ocho de la mañana, qué colegios quedan a cinco minutos. Lo que no aparece en los portales.</p>
+          </li>
+          <li class="pillar">
+            <span class="pillar__n" aria-hidden="true">03</span>
+            <h3>Transparencia en cada operación</h3>
+            <p>Revisamos títulos, deudas y permisos antes de que firmes nada, y te detallamos por escrito cada costo —comisión, notaría, Conservador— desde el primer día.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. Propiedades destacadas -->
+    <section class="props" id="propiedades">
+      <div class="container">
+        <div class="head">
+          <div class="head__row">
+            <span class="eyebrow">Propiedades destacadas</span>
+            <p class="sample">Contenido de ejemplo</p>
+          </div>
+          <h2>Casas seleccionadas en Chicureo</h2>
+          <p>Una muestra de lo que tenemos hoy. Si buscas algo distinto, cuéntanos: muchas propiedades las gestionamos antes de publicarlas.</p>
+        </div>
+
+        <div class="props__grid">
+          <!-- EDITAR: cada tarjeta = carpeta assets/propiedades/casa-N/ (principal.webp + 1.webp … 4.webp opcionales) -->
+          <article class="prop">
+            <button class="prop__media" type="button" data-ph="assets/propiedades/casa-1/principal.webp" data-gallery="casa-1" data-title="Casa en Piedra Roja" aria-label="Ver fotos: casa en Piedra Roja">
+              <img src="assets/propiedades/casa-1/principal.webp" alt="Casa en Piedra Roja, Chicureo" width="1200" height="800">
+              <span class="prop__tag">Venta</span>
+              <span class="prop__more"><svg class="ico" aria-hidden="true"><use href="#i-photos"/></svg>Ver fotos</span>
+            </button>
+            <div class="prop__body">
+              <p class="prop__loc"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Piedra Roja</p>
+              <h3>Casa mediterránea con piscina y jardín</h3>
+              <p class="prop__price">UF 14.900</p>
+              <ul class="prop__specs">
+                <li><svg class="ico" aria-hidden="true"><use href="#i-bed"/></svg>4 dormitorios</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-bath"/></svg>4 baños</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-area"/></svg>260 m² const.</li>
+              </ul>
+              <a class="btn btn--line js-wa" href="#" data-msg="Hola, quiero consultar por la casa en venta en Piedra Roja (4D/4B, 260 m², UF 14.900) que vi en su web.">Consultar por esta propiedad</a>
+            </div>
+          </article>
+
+          <article class="prop">
+            <button class="prop__media" type="button" data-ph="assets/propiedades/casa-2/principal.webp" data-gallery="casa-2" data-title="Casa en Santa Elena" aria-label="Ver fotos: casa en Santa Elena">
+              <img src="assets/propiedades/casa-2/principal.webp" alt="Casa en Santa Elena, Chicureo" width="1200" height="800" loading="lazy">
+              <span class="prop__tag">Venta</span>
+              <span class="prop__more"><svg class="ico" aria-hidden="true"><use href="#i-photos"/></svg>Ver fotos</span>
+            </button>
+            <div class="prop__body">
+              <p class="prop__loc"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Santa Elena</p>
+              <h3>Casa de campo en parcela de 5.000 m²</h3>
+              <p class="prop__price">UF 21.500</p>
+              <ul class="prop__specs">
+                <li><svg class="ico" aria-hidden="true"><use href="#i-bed"/></svg>5 dormitorios</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-bath"/></svg>5 baños</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-area"/></svg>340 m² const.</li>
+              </ul>
+              <a class="btn btn--line js-wa" href="#" data-msg="Hola, quiero consultar por la casa en venta en Santa Elena (5D/5B, 340 m², UF 21.500) que vi en su web.">Consultar por esta propiedad</a>
+            </div>
+          </article>
+
+          <article class="prop">
+            <button class="prop__media" type="button" data-ph="assets/propiedades/casa-3/principal.webp" data-gallery="casa-3" data-title="Casa en Valle Grande" aria-label="Ver fotos: casa en Valle Grande">
+              <img src="assets/propiedades/casa-3/principal.webp" alt="Casa en Valle Grande, Chicureo" width="1200" height="800" loading="lazy">
+              <span class="prop__tag">Arriendo</span>
+              <span class="prop__more"><svg class="ico" aria-hidden="true"><use href="#i-photos"/></svg>Ver fotos</span>
+            </button>
+            <div class="prop__body">
+              <p class="prop__loc"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Valle Grande</p>
+              <h3>Casa de vigas a la vista con quincho de piedra</h3>
+              <p class="prop__price">UF 72 <small>/ mes</small></p>
+              <ul class="prop__specs">
+                <li><svg class="ico" aria-hidden="true"><use href="#i-bed"/></svg>4 dormitorios</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-bath"/></svg>4 baños</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-area"/></svg>245 m² const.</li>
+              </ul>
+              <a class="btn btn--line js-wa" href="#" data-msg="Hola, quiero consultar por la casa en arriendo en Valle Grande (4D/4B, 245 m², UF 72 mensuales) que vi en su web.">Consultar por esta propiedad</a>
+            </div>
+          </article>
+
+          <article class="prop">
+            <button class="prop__media" type="button" data-ph="assets/propiedades/casa-4/principal.webp" data-gallery="casa-4" data-title="Casa en Ayres de Chicureo" aria-label="Ver fotos: casa en Ayres de Chicureo">
+              <img src="assets/propiedades/casa-4/principal.webp" alt="Casa en Ayres de Chicureo" width="1200" height="800" loading="lazy">
+              <span class="prop__tag">Venta</span>
+              <span class="prop__more"><svg class="ico" aria-hidden="true"><use href="#i-photos"/></svg>Ver fotos</span>
+            </button>
+            <div class="prop__body">
+              <p class="prop__loc"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Ayres de Chicureo</p>
+              <h3>Casa contemporánea con piscina y vista al cerro</h3>
+              <p class="prop__price">UF 17.400</p>
+              <ul class="prop__specs">
+                <li><svg class="ico" aria-hidden="true"><use href="#i-bed"/></svg>4 dormitorios</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-bath"/></svg>4 baños</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-area"/></svg>285 m² const.</li>
+              </ul>
+              <a class="btn btn--line js-wa" href="#" data-msg="Hola, quiero consultar por la casa en venta en Ayres de Chicureo (4D/4B, 285 m², UF 17.400) que vi en su web.">Consultar por esta propiedad</a>
+            </div>
+          </article>
+
+          <article class="prop">
+            <button class="prop__media" type="button" data-ph="assets/propiedades/casa-5/principal.webp" data-gallery="casa-5" data-title="Casa en Los Algarrobos" aria-label="Ver fotos: casa en Los Algarrobos">
+              <img src="assets/propiedades/casa-5/principal.webp" alt="Casa en Los Algarrobos, Chicureo" width="1023" height="575" loading="lazy">
+              <span class="prop__tag">Arriendo</span>
+              <span class="prop__more"><svg class="ico" aria-hidden="true"><use href="#i-photos"/></svg>Ver fotos</span>
+            </button>
+            <div class="prop__body">
+              <p class="prop__loc"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Los Algarrobos</p>
+              <h3>Casa moderna en ladera con vista panorámica</h3>
+              <p class="prop__price">UF 95 <small>/ mes</small></p>
+              <ul class="prop__specs">
+                <li><svg class="ico" aria-hidden="true"><use href="#i-bed"/></svg>5 dormitorios</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-bath"/></svg>5 baños</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-area"/></svg>320 m² const.</li>
+              </ul>
+              <a class="btn btn--line js-wa" href="#" data-msg="Hola, quiero consultar por la casa en arriendo en Los Algarrobos (5D/5B, 320 m², UF 95 mensuales) que vi en su web.">Consultar por esta propiedad</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Equipo -->
+    <section class="team" id="equipo">
+      <div class="container">
+        <div class="head">
+          <div class="head__row">
+            <span class="eyebrow">Nuestro equipo</span>
+            <p class="sample">Contenido de ejemplo</p>
+          </div>
+          <h2>Las personas detrás de cada operación</h2>
+          <p>Tres corredoras, un mismo estándar. Vas a hablar siempre con una de ellas, nunca con un call center.</p>
+        </div>
+
+        <div class="team__grid">
+          <!-- EDITAR: nombres, cargos, años y frases. Fotos en assets/agentes/corredora1.jpg … corredora3.jpg -->
+          <article class="agent">
+            <div class="agent__photo" data-ph="assets/agentes/corredora1.jpg">
+              <img src="assets/agentes/corredora1.jpg" alt="Retrato de Paula Lagos" width="900" height="1200" loading="lazy">
+            </div>
+            <h3>Paula Lagos</h3>
+            <p class="agent__role">Corredora de Propiedades <span>· 12 años</span></p>
+            <p class="agent__quote">“Vivo en Chicureo desde 2009: conozco los condominios por dentro, no solo por el aviso.”</p>
+            <a class="link js-wa" href="#" data-msg="Hola, me gustaría hablar con Paula Lagos.">Hablar con Paula</a>
+          </article>
+          <article class="agent">
+            <div class="agent__photo" data-ph="assets/agentes/corredora2.jpg">
+              <img src="assets/agentes/corredora2.jpg" alt="Retrato de Josefina Vial" width="900" height="1200" loading="lazy">
+            </div>
+            <h3>Josefina Vial</h3>
+            <p class="agent__role">Asesora Inmobiliaria <span>· 8 años</span></p>
+            <p class="agent__quote">“Antes de mostrarte una casa reviso sus papeles. Prefiero que no haya sorpresas en la notaría.”</p>
+            <a class="link js-wa" href="#" data-msg="Hola, me gustaría hablar con Josefina Vial.">Hablar con Josefina</a>
+          </article>
+          <article class="agent">
+            <div class="agent__photo" data-ph="assets/agentes/corredora3.jpg">
+              <img src="assets/agentes/corredora3.jpg" alt="Retrato de Carolina Riquelme" width="900" height="1200" loading="lazy">
+            </div>
+            <h3>Carolina Riquelme</h3>
+            <p class="agent__role">Corredora · Arriendos <span>· 6 años</span></p>
+            <p class="agent__quote">“Si hay que contestar un domingo, contesto. Una mudanza no espera al lunes.”</p>
+            <a class="link js-wa" href="#" data-msg="Hola, me gustaría hablar con Carolina Riquelme.">Hablar con Carolina</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Cómo trabajamos -->
+    <section class="process" id="proceso">
+      <div class="container">
+        <div class="head">
+          <span class="eyebrow" style="margin:0">Cómo trabajamos</span>
+          <h2>Un proceso claro, sin letra chica</h2>
+          <p>Cuatro etapas, un solo interlocutor. Siempre sabes en qué punto está tu operación.</p>
+        </div>
+        <ol class="steps" style="list-style:none;margin:0;padding:0">
+          <li class="step">
+            <span class="step__n" aria-hidden="true">01</span>
+            <h3>Conversamos tus necesidades</h3>
+            <p>Presupuesto, plazos, colegios, trayectos. Partimos por entender cómo vives, no solo cuántos dormitorios buscas.</p>
+          </li>
+          <li class="step">
+            <span class="step__n" aria-hidden="true">02</span>
+            <h3>Te mostramos opciones filtradas</h3>
+            <p>Solo visitas que valen la pena. Te contamos lo bueno y lo que no nos convence de cada propiedad.</p>
+          </li>
+          <li class="step">
+            <span class="step__n" aria-hidden="true">03</span>
+            <h3>Te acompañamos en la negociación</h3>
+            <p>Estudio de títulos, oferta, promesa y financiamiento. Revisamos cada documento contigo antes de firmar.</p>
+          </li>
+          <li class="step">
+            <span class="step__n" aria-hidden="true">04</span>
+            <h3>Cerramos juntos</h3>
+            <p>Escritura, inscripción y entrega de llaves con acta. Y seguimos disponibles después de la mudanza.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 6. Contacto -->
+    <section class="contact" id="contacto">
+      <div class="container contact__grid">
+        <div>
+          <span class="eyebrow">Contacto</span>
+          <h2>Conversemos sobre tu próxima casa</h2>
+          <p class="contact__lead">Escríbenos por WhatsApp y una de nuestras corredoras te responde personalmente, normalmente el mismo día.</p>
+          <a class="btn btn--lg js-wa" href="#" data-msg="Hola Somos Chicureo Propiedades, quiero agendar una conversación con una corredora.">
+            <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Escribir por WhatsApp
+          </a>
+          <ul class="contact__list">
+            <li>
+              <svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>
+              <span><strong>WhatsApp</strong><a class="js-wa" href="#" data-msg="Hola Somos Chicureo Propiedades!">+56 9 2602 8453</a></span>
+            </li>
+            <li>
+              <svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>
+              <!-- EDITAR: dirección real de la oficina -->
+              <span><strong>Oficina <span class="sample">Ejemplo</span></strong>Av. Chicureo 1450, Of. 204, Chicureo, Colina</span>
+            </li>
+            <li>
+              <svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg>
+              <!-- EDITAR: horario real -->
+              <span><strong>Horario <span class="sample">Ejemplo</span></strong>Lunes a viernes 9:30–19:00 · Sábado 10:00–14:00</span>
+            </li>
+          </ul>
+        </div>
+        <div class="map">
+          <iframe title="Mapa de Chicureo, Colina" src="https://www.google.com/maps?q=Chicureo,+Colina,+Chile&z=13&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> Somos Chicureo Propiedades · Chicureo, Colina</p>
+      <p><a class="js-wa" href="#" data-msg="Hola Somos Chicureo Propiedades!">+56 9 2602 8453</a></p>
+    </div>
+  </footer>
+
+  <a class="wa-float js-wa" href="#" data-msg="Hola Somos Chicureo Propiedades, quiero hacer una consulta." aria-label="Escríbenos por WhatsApp">
+    <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>
+  </a>
+
+  <dialog class="gallery" aria-labelledby="gallery-title">
+    <div class="gallery__bar">
+      <div>
+        <p class="gallery__title" id="gallery-title"></p>
+        <p class="gallery__count" aria-live="polite"></p>
+      </div>
+      <button class="gallery__btn" type="button" data-close aria-label="Cerrar galería"><svg class="ico" aria-hidden="true"><use href="#i-close"/></svg></button>
+    </div>
+    <div class="gallery__stage">
+      <img alt="">
+      <button class="gallery__btn gallery__nav" type="button" data-dir="-1" aria-label="Foto anterior"><svg class="ico" aria-hidden="true"><use href="#i-prev"/></svg></button>
+      <button class="gallery__btn gallery__nav" type="button" data-dir="1" aria-label="Foto siguiente"><svg class="ico" aria-hidden="true"><use href="#i-next"/></svg></button>
+    </div>
+  </dialog>
+
+  <!-- Íconos (trazo 1.5, estilo lineal) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 8.6c.2-.5.5-.6.8-.6h.5c.2 0 .4 0 .5.4l.7 1.6c.1.2 0 .4-.1.6l-.5.6c-.1.1-.2.3 0 .5.4.7 1 1.4 1.7 1.9.4.3.8.5 1.1.6.2.1.4 0 .5-.1l.6-.7c.2-.2.3-.2.6-.1l1.5.7c.3.1.4.3.4.5 0 .5-.2 1.1-.6 1.4-.5.4-1.2.6-2 .4-1.3-.3-2.6-1.1-3.7-2.2-1-1-1.8-2.2-2.1-3.4-.2-.8 0-1.5.4-2.1z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></symbol>
+    <symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 18.5v-11M3 14h18v4.5M21 14v-2.5a3 3 0 0 0-3-3h-7V14"/><circle cx="7" cy="11" r="1.6"/></symbol>
+    <symbol id="i-bath" viewBox="0 0 24 24"><path d="M4 12h16v2.5a4.5 4.5 0 0 1-4.5 4.5h-7A4.5 4.5 0 0 1 4 14.5zM6 12V6a2 2 0 0 1 3.7-1M7 19l-1 2M17 19l1 2"/></symbol>
+    <symbol id="i-area" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></symbol>
+    <symbol id="i-photos" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l1.5 4-2 1.3a11 11 0 0 0 6.7 6.7L16 14l4 1.5V19a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 6v12M15 6v12"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10-6.5z"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-prev" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
+    <symbol id="i-next" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></symbol>
+  </svg>
+
+  <script>
+    // EDITAR: número de WhatsApp (código país + número, sin + ni espacios).
+    const CONFIG = {
+      whatsapp: "56926028453",
+    };
+
+    document.querySelectorAll(".js-wa").forEach((a) => {
+      const msg = encodeURIComponent(a.dataset.msg || "Hola Somos Chicureo Propiedades!");
+      a.href = `https://wa.me/${CONFIG.whatsapp}?text=${msg}`;
+      a.target = "_blank";
+      a.rel = "noopener";
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Fotos que aún no se suben: se muestra un marcador con la ruta esperada.
+    document.querySelectorAll("[data-ph] img").forEach((img) => {
+      const mark = () => img.closest("[data-ph]").classList.add("is-empty");
+      if (img.complete && !img.naturalWidth) mark();
+      else img.addEventListener("error", mark, { once: true });
+    });
+
+    // Navegación: fondo sólido al bajar, menú móvil.
+    const nav = document.querySelector(".nav");
+    const waFloat = document.querySelector(".wa-float");
+    const onScroll = () => {
+      nav.classList.toggle("is-solid", window.scrollY > 40);
+      waFloat.classList.toggle("is-on", window.scrollY > window.innerHeight * 0.8);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    const toggle = document.querySelector(".nav__toggle");
+    const menu = document.getElementById("menu");
+    const setMenu = (open) => {
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+      menu.classList.toggle("is-open", open);
+    };
+    toggle.addEventListener("click", () => setMenu(toggle.getAttribute("aria-expanded") !== "true"));
+    menu.addEventListener("click", (e) => { if (e.target.closest("a")) setMenu(false); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
+
+    // Video del hero: botón de pausa, respeta "reducir movimiento" y se pausa fuera de pantalla.
+    (() => {
+      const video = document.querySelector(".hero__video");
+      const btn = document.querySelector(".hero__pause");
+      let userPaused = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const sync = () => {
+        btn.setAttribute("aria-pressed", String(userPaused));
+        btn.setAttribute("aria-label", userPaused ? "Reproducir video de fondo" : "Pausar video de fondo");
+      };
+      if (userPaused) { video.removeAttribute("autoplay"); video.pause(); }
+      sync();
+      btn.addEventListener("click", () => {
+        userPaused = !userPaused;
+        userPaused ? video.pause() : video.play().catch(() => {});
+        sync();
+      });
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(([e]) => {
+          if (userPaused) return;
+          e.isIntersecting ? video.play().catch(() => {}) : video.pause();
+        }).observe(video);
+      }
+    })();
+
+    // Galería de cada propiedad: principal.webp + 1.webp … 4.webp (las que existan).
+    (() => {
+      const dlg = document.querySelector(".gallery");
+      if (!dlg || !dlg.showModal) return;
+      const img = dlg.querySelector(".gallery__stage img");
+      const title = dlg.querySelector(".gallery__title");
+      const count = dlg.querySelector(".gallery__count");
+      const navs = dlg.querySelectorAll(".gallery__nav");
+      const FILES = ["principal.webp", "1.webp", "2.webp", "3.webp", "4.webp"];
+      const cache = {};
+      let photos = [];
+      let i = 0;
+
+      const exists = (src) => new Promise((ok) => {
+        const t = new Image();
+        t.onload = () => ok(src);
+        t.onerror = () => ok(null);
+        t.src = src;
+      });
+      const show = (n) => {
+        i = (n + photos.length) % photos.length;
+        img.src = photos[i];
+        img.alt = `${title.textContent}, foto ${i + 1} de ${photos.length}`;
+        count.textContent = `${i + 1} / ${photos.length}`;
+        navs.forEach((b) => (b.hidden = photos.length < 2));
+      };
+
+      document.querySelectorAll("[data-gallery]").forEach((btn) => {
+        btn.addEventListener("click", async () => {
+          const id = btn.dataset.gallery;
+          cache[id] ??= (await Promise.all(FILES.map((f) => exists(`assets/propiedades/${id}/${f}`)))).filter(Boolean);
+          if (!cache[id].length) return;
+          photos = cache[id];
+          title.textContent = btn.dataset.title;
+          show(0);
+          dlg.showModal();
+        });
+      });
+      navs.forEach((b) => b.addEventListener("click", () => show(i + Number(b.dataset.dir))));
+      dlg.querySelector("[data-close]").addEventListener("click", () => dlg.close());
+      dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
+      dlg.addEventListener("keydown", (e) => {
+        if (photos.length < 2) return;
+        if (e.key === "ArrowRight") show(i + 1);
+        if (e.key === "ArrowLeft") show(i - 1);
+      });
+    })();
+
+    // Aparición suave al hacer scroll.
+    (() => {
+      const els = document.querySelectorAll(".head, .about__intro, .pillar, .prop, .agent, .step, .contact__grid > *");
+      if (!("IntersectionObserver" in window)) return;
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
+        });
+      }, { rootMargin: "0px 0px -8% 0px" });
+      els.forEach((el, k) => {
+        el.classList.add("reveal");
+        el.style.transitionDelay = `${(k % 3) * 70}ms`;
+        io.observe(el);
+      });
+    })();
+  </script>
+</body>
+</html>
