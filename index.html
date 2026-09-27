@@ -6,6 +6,8 @@
   <title>Somos Chicureo Propiedades · Corredora de propiedades en Chicureo, Colina</title>
   <meta name="description" content="Compra, venta y arriendo de casas en Chicureo, Colina. Corredoras que conocen el sector y te acompañan en cada paso de la operación.">
   <meta name="theme-color" content="#1e1c19">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
@@ -74,9 +76,11 @@
     .nav { position: fixed; inset: 0 0 auto; z-index: 40; color: var(--paper); transition: background-color .35s var(--ease), color .35s var(--ease), box-shadow .35s var(--ease); }
     .nav.is-solid { background: rgba(247, 244, 239, .96); color: var(--ink); box-shadow: 0 1px 0 var(--line); }
     .nav__inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 76px; }
-    .brand { display: grid; line-height: 1; text-decoration: none; }
-    .brand b { font: 500 22px/1 var(--serif); letter-spacing: -.01em; }
-    .brand span { margin-top: 5px; font: 600 10px/1 var(--sans); letter-spacing: .28em; text-transform: uppercase; opacity: .75; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand__mark { width: auto; height: 30px; }
+    .brand__text { display: grid; line-height: 1; }
+    .brand b { font: 600 14px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; }
+    .brand__text span { margin-top: 6px; font: 600 9.5px/1 var(--sans); letter-spacing: .38em; text-transform: uppercase; opacity: .75; }
     .nav__menu { display: flex; align-items: center; gap: 32px; }
     .nav__menu a:not(.btn) { font-size: 14px; font-weight: 500; text-decoration: none; opacity: .85; transition: opacity .2s; }
     .nav__menu a:not(.btn):hover { opacity: 1; }
@@ -186,7 +190,8 @@
 
     /* Pie */
     .footer { padding: 40px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
-    .footer__inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; }
+    .footer__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; }
+    .footer__logo { width: 150px; height: auto; }
 
     /* WhatsApp flotante */
     .wa-float { position: fixed; right: 20px; bottom: 20px; z-index: 30; display: grid; place-items: center; width: 54px; height: 54px; border-radius: 50%; background: var(--ink); color: var(--paper); box-shadow: 0 10px 30px -10px rgba(0, 0, 0, .45); opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity .3s var(--ease), transform .3s var(--ease), background-color .25s; }
@@ -253,8 +258,8 @@
   <header class="nav">
     <div class="container nav__inner">
       <a class="brand" href="#top" aria-label="Somos Chicureo Propiedades, inicio">
-        <b>Somos Chicureo</b>
-        <span>Propiedades</span>
+        <img class="brand__mark" src="assets/logo-casas.png" alt="" width="400" height="155">
+        <span class="brand__text"><b>Somos Chicureo</b><span>Propiedades</span></span>
       </a>
       <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
         <span></span><span></span><span></span>
@@ -551,6 +556,7 @@
 
   <footer class="footer">
     <div class="container footer__inner">
+      <img class="footer__logo" src="assets/logo.webp" alt="Somos Chicureo Propiedades · Gestión Inmobiliaria" width="720" height="426" loading="lazy">
       <p>© <span id="year"></span> Somos Chicureo Propiedades · Chicureo, Colina</p>
       <p><a class="js-wa" href="#" data-msg="Hola Somos Chicureo Propiedades!">+56 9 2602 8453</a></p>
     </div>
