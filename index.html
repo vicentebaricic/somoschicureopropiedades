@@ -76,13 +76,13 @@
     .nav { position: fixed; inset: 0 0 auto; z-index: 40; color: var(--paper); transition: background-color .35s var(--ease), color .35s var(--ease), box-shadow .35s var(--ease); }
     .nav.is-solid { background: rgba(247, 244, 239, .96); color: var(--ink); box-shadow: 0 1px 0 var(--line); }
     .nav__inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 76px; }
-    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand { display: flex; flex: none; align-items: center; gap: 12px; text-decoration: none; }
     .brand__mark { width: auto; height: 30px; }
     .brand__text { display: grid; line-height: 1; }
     .brand b { font: 600 14px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; }
     .brand__text span { margin-top: 6px; font: 600 9.5px/1 var(--sans); letter-spacing: .38em; text-transform: uppercase; opacity: .75; }
     .nav__menu { display: flex; align-items: center; gap: 32px; }
-    .nav__menu a:not(.btn) { font-size: 14px; font-weight: 500; text-decoration: none; opacity: .85; transition: opacity .2s; }
+    .nav__menu a:not(.btn) { font-size: 14px; font-weight: 500; white-space: nowrap; text-decoration: none; opacity: .85; transition: opacity .2s; }
     .nav__menu a:not(.btn):hover { opacity: 1; }
     .nav .btn { min-height: 42px; padding: 0 18px; font-size: 14px; background: transparent; border-color: currentColor; color: inherit; }
     .nav .btn:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
@@ -130,7 +130,14 @@
 
     /* Propiedades */
     .props { background: var(--paper-2); }
+    .filter { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; margin: -16px 0 40px; }
+    .filter__group { display: inline-flex; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); }
+    .filter__btn { min-height: 40px; padding: 0 20px; border: 0; border-radius: 999px; background: transparent; color: var(--ink-2); font-size: 14px; font-weight: 500; cursor: pointer; transition: background-color .25s var(--ease), color .25s var(--ease); }
+    .filter__btn:hover { color: var(--ink); }
+    .filter__btn[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+    .filter__status { color: var(--muted); font-size: 14px; }
     .props__grid { display: grid; grid-template-columns: 1fr; gap: 48px 28px; }
+    .prop[hidden] { display: none; }
     .prop { display: flex; flex-direction: column; }
     .prop__media { position: relative; display: block; width: 100%; padding: 0; border: 0; border-radius: var(--r); overflow: hidden; background: var(--line); aspect-ratio: 4 / 3; cursor: pointer; }
     .prop__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
@@ -188,6 +195,37 @@
     .map { min-height: 360px; border-radius: var(--r); overflow: hidden; background: var(--paper-2); }
     .map iframe { width: 100%; height: 100%; min-height: 360px; border: 0; filter: grayscale(.85) contrast(.95); }
 
+    /* Formulario: vende o arrienda */
+    .owner { background: var(--paper-2); }
+    .form { display: grid; grid-template-columns: 1fr; gap: 22px 24px; padding: clamp(24px, 4vw, 48px); border: 1px solid var(--line); border-radius: var(--r); background: var(--paper); }
+    .field { display: grid; gap: 8px; align-content: start; min-width: 0; }
+    .field label, .field legend { padding: 0; font-size: 14px; font-weight: 500; color: var(--ink-2); }
+    .field .req { color: var(--accent); }
+    .field .opt { color: var(--muted); font-weight: 400; }
+    .input { width: 100%; min-height: 50px; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--r); background: #fff; color: var(--ink); font: 400 16px/1.4 var(--sans); transition: border-color .2s var(--ease), box-shadow .2s var(--ease); }
+    .input::placeholder { color: #9a9286; }
+    .input:hover { border-color: #c9bfb0; }
+    .input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(122, 103, 73, .18); }
+    .input[aria-invalid="true"] { border-color: #a2412f; }
+    select.input { appearance: none; padding-right: 42px; cursor: pointer; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236a6358' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center / 18px; }
+    select.input:invalid, select.input.is-placeholder { color: #9a9286; }
+    select.input option { color: var(--ink); }
+    textarea.input { min-height: 132px; resize: vertical; }
+    .field__error { color: #a2412f; font-size: 13px; }
+    .field__error:empty { display: none; }
+    .seg { display: inline-flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; border: 0; min-width: 0; }
+    .seg legend { margin-bottom: 8px; }
+    .seg label { position: relative; cursor: pointer; }
+    .seg input { position: absolute; opacity: 0; pointer-events: none; }
+    .seg span { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border: 1px solid var(--line); border-radius: 999px; background: #fff; font-size: 15px; transition: background-color .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease); }
+    .seg input:checked + span { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+    .seg input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .form__foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; padding-top: 8px; }
+    .form__note { max-width: 520px; color: var(--muted); font-size: 14px; }
+    .form__ok { grid-column: 1 / -1; padding: 14px 16px; border-left: 2px solid var(--accent); background: var(--paper-2); font-size: 15px; }
+    .form__ok[hidden] { display: none; }
+    @media (max-width: 719px) { .form__foot .btn { width: 100%; } }
+
     /* Pie */
     .footer { padding: 40px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
     .footer__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; }
@@ -221,9 +259,11 @@
 
     @media (min-width: 720px) {
       .props__grid { grid-template-columns: repeat(2, 1fr); }
-      .props__grid .prop:first-child { grid-column: span 2; }
+      .props__grid .prop.is-top { grid-column: span 2; }
       .team__grid { grid-template-columns: repeat(3, 1fr); }
       .steps { grid-template-columns: repeat(2, 1fr); column-gap: 48px; }
+      .form { grid-template-columns: repeat(2, 1fr); }
+      .field--full, .form__foot { grid-column: 1 / -1; }
     }
     @media (min-width: 1024px) {
       .about__grid { grid-template-columns: 1.05fr 1fr; gap: 96px; align-items: start; }
@@ -231,13 +271,18 @@
       /* 5 tarjetas: 2 grandes arriba, 3 abajo */
       .props__grid { grid-template-columns: repeat(6, 1fr); }
       .props__grid .prop { grid-column: span 2; }
-      .props__grid .prop:nth-child(-n+2) { grid-column: span 3; }
-      .props__grid .prop:nth-child(-n+2) .prop__media { aspect-ratio: 3 / 2; }
+      .props__grid .prop.is-top { grid-column: span 2; }
+      .props__grid .prop.is-lead { grid-column: span 3; }
+      .props__grid .prop.is-lead .prop__media { aspect-ratio: 3 / 2; }
       .steps { grid-template-columns: repeat(4, 1fr); column-gap: 40px; border-top: 0; }
       .step { padding: 32px 0 0; border-bottom: 0; border-top: 1px solid #34312b; }
       .contact__grid { grid-template-columns: 1fr 1.15fr; gap: 80px; align-items: stretch; }
+      .form { grid-template-columns: repeat(12, 1fr); }
+      .field { grid-column: span 4; }
+      .field--q { grid-column: span 3; }
+      .field--full, .form__foot { grid-column: 1 / -1; }
     }
-    @media (max-width: 900px) {
+    @media (max-width: 1179px) {
       .nav__toggle { display: block; }
       .nav__menu { position: fixed; inset: 76px 0 auto; flex-direction: column; align-items: stretch; gap: 0; padding: 8px var(--gutter) 28px; background: var(--paper); color: var(--ink); box-shadow: 0 1px 0 var(--line); transform: translateY(-8px); opacity: 0; visibility: hidden; transition: opacity .25s var(--ease), transform .25s var(--ease), visibility .25s; }
       .nav__menu.is-open { transform: none; opacity: 1; visibility: visible; }
@@ -269,6 +314,7 @@
         <a href="#propiedades">Propiedades</a>
         <a href="#equipo">Equipo</a>
         <a href="#proceso">Cómo trabajamos</a>
+        <a href="#vende">Vende o arrienda</a>
         <a href="#contacto">Contacto</a>
         <a class="btn js-wa" href="#" data-msg="Hola Somos Chicureo Propiedades, quiero hacerles una consulta.">WhatsApp</a>
       </nav>
@@ -342,9 +388,18 @@
           <p>Una muestra de lo que tenemos hoy. Si buscas algo distinto, cuéntanos: muchas propiedades las gestionamos antes de publicarlas.</p>
         </div>
 
+        <div class="filter">
+          <div class="filter__group" role="group" aria-label="Filtrar por tipo de operación">
+            <button class="filter__btn" type="button" data-filter="todas" aria-pressed="true">Todas</button>
+            <button class="filter__btn" type="button" data-filter="venta" aria-pressed="false">Venta</button>
+            <button class="filter__btn" type="button" data-filter="arriendo" aria-pressed="false">Arriendo</button>
+          </div>
+          <p class="filter__status" role="status" aria-live="polite"></p>
+        </div>
+
         <div class="props__grid">
           <!-- EDITAR: cada tarjeta = carpeta assets/propiedades/casa-N/ (principal.webp + 1.webp … 4.webp opcionales) -->
-          <article class="prop">
+          <article class="prop" data-op="venta">
             <button class="prop__media" type="button" data-ph="assets/propiedades/casa-1/principal.webp" data-gallery="casa-1" data-title="Casa en Piedra Roja" aria-label="Ver fotos: casa en Piedra Roja">
               <img src="assets/propiedades/casa-1/principal.webp" alt="Casa en Piedra Roja, Chicureo" width="1200" height="800">
               <span class="prop__tag">Venta</span>
@@ -363,7 +418,7 @@
             </div>
           </article>
 
-          <article class="prop">
+          <article class="prop" data-op="venta">
             <button class="prop__media" type="button" data-ph="assets/propiedades/casa-2/principal.webp" data-gallery="casa-2" data-title="Casa en Santa Elena" aria-label="Ver fotos: casa en Santa Elena">
               <img src="assets/propiedades/casa-2/principal.webp" alt="Casa en Santa Elena, Chicureo" width="1200" height="800" loading="lazy">
               <span class="prop__tag">Venta</span>
@@ -382,7 +437,7 @@
             </div>
           </article>
 
-          <article class="prop">
+          <article class="prop" data-op="arriendo">
             <button class="prop__media" type="button" data-ph="assets/propiedades/casa-3/principal.webp" data-gallery="casa-3" data-title="Casa en Valle Grande" aria-label="Ver fotos: casa en Valle Grande">
               <img src="assets/propiedades/casa-3/principal.webp" alt="Casa en Valle Grande, Chicureo" width="1200" height="800" loading="lazy">
               <span class="prop__tag">Arriendo</span>
@@ -401,7 +456,7 @@
             </div>
           </article>
 
-          <article class="prop">
+          <article class="prop" data-op="venta">
             <button class="prop__media" type="button" data-ph="assets/propiedades/casa-4/principal.webp" data-gallery="casa-4" data-title="Casa en Ayres de Chicureo" aria-label="Ver fotos: casa en Ayres de Chicureo">
               <img src="assets/propiedades/casa-4/principal.webp" alt="Casa en Ayres de Chicureo" width="1200" height="800" loading="lazy">
               <span class="prop__tag">Venta</span>
@@ -420,7 +475,7 @@
             </div>
           </article>
 
-          <article class="prop">
+          <article class="prop" data-op="arriendo">
             <button class="prop__media" type="button" data-ph="assets/propiedades/casa-5/principal.webp" data-gallery="casa-5" data-title="Casa en Los Algarrobos" aria-label="Ver fotos: casa en Los Algarrobos">
               <img src="assets/propiedades/casa-5/principal.webp" alt="Casa en Los Algarrobos, Chicureo" width="1023" height="575" loading="lazy">
               <span class="prop__tag">Arriendo</span>
@@ -520,7 +575,114 @@
       </div>
     </section>
 
-    <!-- 6. Contacto -->
+    <!-- 6. Vende o arrienda con nosotros -->
+    <section class="owner" id="vende">
+      <div class="container">
+        <div class="head">
+          <span class="eyebrow" style="margin:0">Vende o arrienda con nosotros</span>
+          <h2>¿Tienes una propiedad en mente?</h2>
+          <p>Cuéntanos de ella y una corredora te contacta para coordinar una visita y una tasación comercial, sin compromiso.</p>
+        </div>
+
+        <form class="form" id="owner-form" novalidate>
+          <fieldset class="field field--full seg">
+            <legend>¿Qué te gustaría hacer?</legend>
+            <label><input type="radio" name="operacion" value="Vender" checked><span>Vender</span></label>
+            <label><input type="radio" name="operacion" value="Arrendar"><span>Arrendar</span></label>
+            <label><input type="radio" name="operacion" value="Vender o arrendar"><span>Aún no lo decido</span></label>
+          </fieldset>
+
+          <div class="field field--q">
+            <label for="f-rut">RUT <span class="opt">(opcional)</span></label>
+            <input class="input" id="f-rut" name="rut" type="text" inputmode="text" autocomplete="off" placeholder="12.345.678-9" aria-describedby="e-rut">
+            <p class="field__error" id="e-rut"></p>
+          </div>
+          <div class="field field--q">
+            <label for="f-nombre">Nombre completo <span class="req" aria-hidden="true">*</span></label>
+            <input class="input" id="f-nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="e-nombre">
+            <p class="field__error" id="e-nombre"></p>
+          </div>
+          <div class="field field--q">
+            <label for="f-telefono">Teléfono <span class="req" aria-hidden="true">*</span></label>
+            <input class="input" id="f-telefono" name="telefono" type="tel" autocomplete="tel" placeholder="+56 9 1234 5678" required aria-describedby="e-telefono">
+            <p class="field__error" id="e-telefono"></p>
+          </div>
+          <div class="field field--q">
+            <label for="f-correo">Correo <span class="opt">(opcional)</span></label>
+            <input class="input" id="f-correo" name="correo" type="email" autocomplete="email" placeholder="nombre@correo.cl" aria-describedby="e-correo">
+            <p class="field__error" id="e-correo"></p>
+          </div>
+
+          <div class="field">
+            <label for="f-tipo">Tipo de propiedad</label>
+            <select class="input" id="f-tipo" name="tipo">
+              <option value="">Seleccionar tipo de propiedad</option>
+              <option>Casa</option>
+              <option>Departamento</option>
+              <option>Parcela</option>
+              <option>Terreno</option>
+              <option>Oficina</option>
+              <option>Local comercial</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-valor">Valor comercial estimado (UF)</label>
+            <input class="input js-uf" id="f-valor" name="valor" type="text" inputmode="numeric" placeholder="Ej. 12.000" aria-describedby="e-valor">
+            <p class="field__error" id="e-valor"></p>
+          </div>
+          <div class="field">
+            <label for="f-deuda">Deuda hipotecaria estimada (UF)</label>
+            <input class="input js-uf" id="f-deuda" name="deuda" type="text" inputmode="numeric" placeholder="Ej. 3.500 o 0" aria-describedby="e-deuda">
+            <p class="field__error" id="e-deuda"></p>
+          </div>
+
+          <div class="field">
+            <label for="f-region">Región</label>
+            <select class="input" id="f-region" name="region"></select>
+          </div>
+          <div class="field">
+            <label for="f-comuna">Comuna</label>
+            <select class="input" id="f-comuna" name="comuna"></select>
+          </div>
+          <div class="field">
+            <label for="f-direccion">Dirección</label>
+            <input class="input" id="f-direccion" name="direccion" type="text" autocomplete="street-address" placeholder="Calle, número, condominio">
+          </div>
+
+          <div class="field field--full">
+            <label for="f-origen">¿Cómo supiste de nosotros?</label>
+            <select class="input" id="f-origen" name="origen">
+              <option value="">Seleccionar una opción</option>
+              <option>Recomendación de un conocido</option>
+              <option>Google</option>
+              <option>Instagram</option>
+              <option>Facebook</option>
+              <option>Portal inmobiliario</option>
+              <option>Letrero en una propiedad</option>
+              <option>Otro</option>
+            </select>
+          </div>
+
+          <div class="field field--full">
+            <label for="f-descripcion">Breve descripción del inmueble <span class="req" aria-hidden="true">*</span></label>
+            <textarea class="input" id="f-descripcion" name="descripcion" required placeholder="Antigüedad, estado de conservación, m² aproximados, dormitorios, lo que consideres importante." aria-describedby="e-descripcion"></textarea>
+            <p class="field__error" id="e-descripcion"></p>
+          </div>
+
+          <p class="form__ok" role="status" hidden></p>
+
+          <div class="form__foot">
+            <p class="form__note">Al enviar se abre WhatsApp con tus datos listos; solo tienes que presionar enviar. Los usamos únicamente para contactarte por tu propiedad.</p>
+            <button class="btn btn--lg" type="submit">
+              <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Enviar por WhatsApp
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- 7. Contacto -->
     <section class="contact" id="contacto">
       <div class="container contact__grid">
         <div>
@@ -713,9 +875,162 @@
       });
     })();
 
+    // Filtro de propiedades por operación.
+    (() => {
+      const grid = document.querySelector(".props__grid");
+      const btns = document.querySelectorAll("[data-filter]");
+      const status = document.querySelector(".filter__status");
+      if (!grid || !btns.length) return;
+      const cards = [...grid.querySelectorAll(".prop")];
+      const label = { todas: "", venta: " en venta", arriendo: " en arriendo" };
+      const apply = (f, announce) => {
+        const shown = cards.filter((c) => f === "todas" || c.dataset.op === f);
+        cards.forEach((c) => {
+          c.hidden = !shown.includes(c);
+          c.classList.remove("is-top", "is-lead");
+        });
+        // Escritorio en filas de 3: el sobrante se reparte en tarjetas anchas de 2 por fila.
+        const r = shown.length % 3;
+        const leads = r === 2 ? 2 : r === 1 && shown.length > 1 ? 4 : 0;
+        shown.forEach((c, k) => { if (k < leads) c.classList.add("is-lead"); });
+        // Tablet en filas de 2: si es impar, la primera va a lo ancho.
+        if (shown.length % 2) shown[0]?.classList.add("is-top");
+        btns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.filter === f)));
+        const n = shown.length;
+        status.textContent = announce ? `${n} ${n === 1 ? "propiedad" : "propiedades"}${label[f]}` : "";
+      };
+      btns.forEach((b) => b.addEventListener("click", () => apply(b.dataset.filter, true)));
+      apply("todas", false);
+    })();
+
+    // Formulario "Vende o arrienda": validación y envío por WhatsApp.
+    (() => {
+      const form = document.getElementById("owner-form");
+      if (!form) return;
+      const REGIONES = {
+        "Arica y Parinacota": ["Arica", "Camarones", "General Lagos", "Putre"],
+        "Tarapacá": ["Alto Hospicio", "Camiña", "Colchane", "Huara", "Iquique", "Pica", "Pozo Almonte"],
+        "Antofagasta": ["Antofagasta", "Calama", "María Elena", "Mejillones", "Ollagüe", "San Pedro de Atacama", "Sierra Gorda", "Taltal", "Tocopilla"],
+        "Atacama": ["Alto del Carmen", "Caldera", "Chañaral", "Copiapó", "Diego de Almagro", "Freirina", "Huasco", "Tierra Amarilla", "Vallenar"],
+        "Coquimbo": ["Andacollo", "Canela", "Combarbalá", "Coquimbo", "Illapel", "La Higuera", "La Serena", "Los Vilos", "Monte Patria", "Ovalle", "Paihuano", "Punitaqui", "Río Hurtado", "Salamanca", "Vicuña"],
+        "Valparaíso": ["Algarrobo", "Cabildo", "Calle Larga", "Cartagena", "Casablanca", "Catemu", "Concón", "El Quisco", "El Tabo", "Hijuelas", "Isla de Pascua", "Juan Fernández", "La Calera", "La Cruz", "La Ligua", "Limache", "Llaillay", "Los Andes", "Nogales", "Olmué", "Panquehue", "Papudo", "Petorca", "Puchuncaví", "Putaendo", "Quillota", "Quilpué", "Quintero", "Rinconada", "San Antonio", "San Esteban", "San Felipe", "Santa María", "Santo Domingo", "Valparaíso", "Villa Alemana", "Viña del Mar", "Zapallar"],
+        "Metropolitana de Santiago": ["Alhué", "Buin", "Calera de Tango", "Cerrillos", "Cerro Navia", "Colina", "Conchalí", "Curacaví", "El Bosque", "El Monte", "Estación Central", "Huechuraba", "Independencia", "Isla de Maipo", "La Cisterna", "La Florida", "La Granja", "La Pintana", "La Reina", "Lampa", "Las Condes", "Lo Barnechea", "Lo Espejo", "Lo Prado", "Macul", "Maipú", "María Pinto", "Melipilla", "Ñuñoa", "Padre Hurtado", "Paine", "Pedro Aguirre Cerda", "Peñaflor", "Peñalolén", "Pirque", "Providencia", "Pudahuel", "Puente Alto", "Quilicura", "Quinta Normal", "Recoleta", "Renca", "San Bernardo", "San Joaquín", "San José de Maipo", "San Miguel", "San Pedro", "San Ramón", "Santiago", "Talagante", "Tiltil", "Vitacura"],
+        "Libertador General Bernardo O'Higgins": ["Chépica", "Chimbarongo", "Codegua", "Coinco", "Coltauco", "Doñihue", "Graneros", "La Estrella", "Las Cabras", "Litueche", "Lolol", "Machalí", "Malloa", "Marchigüe", "Mostazal", "Nancagua", "Navidad", "Olivar", "Palmilla", "Paredones", "Peralillo", "Peumo", "Pichidegua", "Pichilemu", "Placilla", "Pumanque", "Quinta de Tilcoco", "Rancagua", "Rengo", "Requínoa", "San Fernando", "San Vicente", "Santa Cruz"],
+        "Maule": ["Cauquenes", "Chanco", "Colbún", "Constitución", "Curepto", "Curicó", "Empedrado", "Hualañé", "Licantén", "Linares", "Longaví", "Maule", "Molina", "Parral", "Pelarco", "Pelluhue", "Pencahue", "Rauco", "Retiro", "Río Claro", "Romeral", "Sagrada Familia", "San Clemente", "San Javier", "San Rafael", "Talca", "Teno", "Vichuquén", "Villa Alegre", "Yerbas Buenas"],
+        "Ñuble": ["Bulnes", "Chillán", "Chillán Viejo", "Cobquecura", "Coelemu", "Coihueco", "El Carmen", "Ninhue", "Ñiquén", "Pemuco", "Pinto", "Portezuelo", "Quillón", "Quirihue", "Ránquil", "San Carlos", "San Fabián", "San Ignacio", "San Nicolás", "Treguaco", "Yungay"],
+        "Biobío": ["Alto Biobío", "Antuco", "Arauco", "Cabrero", "Cañete", "Chiguayante", "Concepción", "Contulmo", "Coronel", "Curanilahue", "Florida", "Hualpén", "Hualqui", "Laja", "Lebu", "Los Álamos", "Los Ángeles", "Lota", "Mulchén", "Nacimiento", "Negrete", "Penco", "Quilaco", "Quilleco", "San Pedro de la Paz", "San Rosendo", "Santa Bárbara", "Santa Juana", "Talcahuano", "Tirúa", "Tomé", "Tucapel", "Yumbel"],
+        "La Araucanía": ["Angol", "Carahue", "Cholchol", "Collipulli", "Cunco", "Curacautín", "Curarrehue", "Ercilla", "Freire", "Galvarino", "Gorbea", "Lautaro", "Loncoche", "Lonquimay", "Los Sauces", "Lumaco", "Melipeuco", "Nueva Imperial", "Padre Las Casas", "Perquenco", "Pitrufquén", "Pucón", "Purén", "Renaico", "Saavedra", "Temuco", "Teodoro Schmidt", "Toltén", "Traiguén", "Victoria", "Vilcún", "Villarrica"],
+        "Los Ríos": ["Corral", "Futrono", "La Unión", "Lago Ranco", "Lanco", "Los Lagos", "Máfil", "Mariquina", "Paillaco", "Panguipulli", "Río Bueno", "Valdivia"],
+        "Los Lagos": ["Ancud", "Calbuco", "Castro", "Chaitén", "Chonchi", "Cochamó", "Curaco de Vélez", "Dalcahue", "Fresia", "Frutillar", "Futaleufú", "Hualaihué", "Llanquihue", "Los Muermos", "Maullín", "Osorno", "Palena", "Puerto Montt", "Puerto Octay", "Puerto Varas", "Puqueldón", "Purranque", "Puyehue", "Queilén", "Quellón", "Quemchi", "Quinchao", "Río Negro", "San Juan de la Costa", "San Pablo"],
+        "Aysén del General Carlos Ibáñez del Campo": ["Aysén", "Chile Chico", "Cisnes", "Cochrane", "Coyhaique", "Guaitecas", "Lago Verde", "O'Higgins", "Río Ibáñez", "Tortel"],
+        "Magallanes y de la Antártica Chilena": ["Antártica", "Cabo de Hornos", "Laguna Blanca", "Natales", "Porvenir", "Primavera", "Punta Arenas", "Río Verde", "San Gregorio", "Timaukel", "Torres del Paine"],
+      };
+      const REGION_INICIAL = "Metropolitana de Santiago";
+      const COMUNA_INICIAL = "Colina";
+      const $ = (id) => document.getElementById(id);
+      const region = $("f-region");
+      const comuna = $("f-comuna");
+      const opt = (text, value = text) => Object.assign(document.createElement("option"), { textContent: text, value });
+
+      region.append(opt("Seleccionar región", ""), ...Object.keys(REGIONES).map((r) => opt(r)));
+      const fillComunas = (r) => {
+        comuna.replaceChildren(opt(r ? "Seleccionar comuna" : "Primero elige una región", ""));
+        (REGIONES[r] || []).forEach((c) => comuna.append(opt(c)));
+        comuna.disabled = !r;
+        syncPlaceholder(comuna);
+      };
+      const syncPlaceholder = (sel) => sel.classList.toggle("is-placeholder", !sel.value);
+      region.addEventListener("change", () => { fillComunas(region.value); syncPlaceholder(region); });
+      form.querySelectorAll("select").forEach((sel) => sel.addEventListener("change", () => syncPlaceholder(sel)));
+      region.value = REGION_INICIAL;
+      fillComunas(REGION_INICIAL);
+      comuna.value = COMUNA_INICIAL;
+      form.querySelectorAll("select").forEach(syncPlaceholder);
+
+      // RUT: formato 12.345.678-9 y dígito verificador (módulo 11).
+      const cleanRut = (v) => v.replace(/[^0-9kK]/g, "").toUpperCase();
+      const rutOk = (v) => {
+        const c = cleanRut(v);
+        if (c.length < 8) return false;
+        const body = c.slice(0, -1), dv = c.slice(-1);
+        let sum = 0, mul = 2;
+        for (let i = body.length - 1; i >= 0; i--) { sum += Number(body[i]) * mul; mul = mul === 7 ? 2 : mul + 1; }
+        const r = 11 - (sum % 11);
+        return dv === (r === 11 ? "0" : r === 10 ? "K" : String(r));
+      };
+      const fmtRut = (v) => {
+        const c = cleanRut(v);
+        if (c.length < 2) return v;
+        return `${c.slice(0, -1).replace(/\B(?=(\d{3})+(?!\d))/g, ".")}-${c.slice(-1)}`;
+      };
+      const fmtUF = (v) => {
+        const [ent, dec] = v.replace(/[^\d,]/g, "").split(",");
+        if (!ent) return "";
+        return ent.replace(/^0+(?=\d)/, "").replace(/\B(?=(\d{3})+(?!\d))/g, ".") + (dec ? `,${dec.slice(0, 2)}` : "");
+      };
+
+      const rules = {
+        "f-rut": (v) => !v || rutOk(v) || "Revisa el RUT: el dígito verificador no coincide.",
+        "f-nombre": (v) => v.trim().split(/\s+/).length >= 2 || "Escribe tu nombre y apellido.",
+        "f-telefono": (v) => v.replace(/\D/g, "").length >= 8 || "Escribe un teléfono de al menos 8 dígitos.",
+        "f-correo": (v) => !v || /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) || "Revisa el correo, por ejemplo nombre@correo.cl.",
+        "f-valor": (v) => !v || /^[\d.]+(,\d{1,2})?$/.test(v) || "Usa solo números, por ejemplo 12.000.",
+        "f-deuda": (v) => !v || /^[\d.]+(,\d{1,2})?$/.test(v) || "Usa solo números, por ejemplo 3.500 o 0.",
+        "f-descripcion": (v) => v.trim().length >= 10 || "Cuéntanos un poco más de la propiedad.",
+      };
+      const check = (id) => {
+        const el = $(id);
+        const res = rules[id](el.value);
+        const msg = res === true ? "" : res;
+        el.setAttribute("aria-invalid", String(!!msg));
+        $(`e-${id.slice(2)}`).textContent = msg;
+        return !msg;
+      };
+      Object.keys(rules).forEach((id) => {
+        const el = $(id);
+        el.addEventListener("blur", () => {
+          if (id === "f-rut" && el.value) el.value = fmtRut(el.value);
+          if (el.classList.contains("js-uf")) el.value = fmtUF(el.value);
+          if (el.value || el.getAttribute("aria-invalid") === "true") check(id);
+        });
+        el.addEventListener("input", () => { if (el.getAttribute("aria-invalid") === "true") check(id); });
+      });
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const bad = Object.keys(rules).filter((id) => !check(id));
+        if (bad.length) { $(bad[0]).focus(); return; }
+        const d = Object.fromEntries(new FormData(form));
+        const BR = "\n";
+        const lineas = [
+          `Hola Somos Chicureo Propiedades, quiero ${d.operacion.toLowerCase()} mi propiedad.`,
+          BR,
+          `• Nombre: ${d.nombre.trim()}`,
+          d.rut && `• RUT: ${d.rut}`,
+          `• Teléfono: ${d.telefono.trim()}`,
+          d.correo && `• Correo: ${d.correo.trim()}`,
+          d.tipo && `• Tipo de propiedad: ${d.tipo}`,
+          d.valor && `• Valor comercial estimado: UF ${d.valor}`,
+          d.deuda && `• Deuda estimada: UF ${d.deuda}`,
+          (d.direccion || d.comuna) && `• Ubicación: ${[d.direccion.trim(), d.comuna, d.region].filter(Boolean).join(", ")}`,
+          d.origen && `• Cómo supe de ustedes: ${d.origen}`,
+          BR,
+          `Descripción: ${d.descripcion.trim()}`,
+        ].filter(Boolean);
+        const texto = lineas.join("\n").replace(/\n\n\n/g, "\n\n");
+        const url = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(texto)}`;
+        const win = window.open(url, "_blank");
+        if (win) win.opener = null;
+        else window.location.href = url;
+        const ok = form.querySelector(".form__ok");
+        ok.textContent = "Listo. Abrimos WhatsApp con tus datos: revisa el mensaje y presiona enviar para que te contactemos.";
+        ok.hidden = false;
+      });
+    })();
+
     // Aparición suave al hacer scroll.
     (() => {
-      const els = document.querySelectorAll(".head, .about__intro, .pillar, .prop, .agent, .step, .contact__grid > *");
+      const els = document.querySelectorAll(".head, .about__intro, .pillar, .prop, .agent, .step, .form, .contact__grid > *");
       if (!("IntersectionObserver" in window)) return;
       const io = new IntersectionObserver((entries) => {
         entries.forEach((e) => {
